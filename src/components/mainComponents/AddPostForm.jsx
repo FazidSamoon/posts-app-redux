@@ -11,10 +11,6 @@ const AddPostForm = () => {
 
   const users = useSelector(selectAllUsers);
 
-  const onTitleChanged = (e) => setTitle(e.target.value);
-  const onContentChanged = (e) => setContent(e.target.value);
-  const onAuthorChanged = (e) => setUserId(e.target.value);
-
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch(postAdded(title, content, userId));
@@ -38,10 +34,10 @@ const AddPostForm = () => {
           id="postTitle"
           name="postTitle"
           value={title}
-          onChange={onTitleChanged}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <label htmlFor="postAuthor">Author:</label>
-        <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
+        <select id="postAuthor" value={userId} onChange={(e) => setUserId(e.target.value)}>
           <option value=""></option>
           {usersOptions}
         </select>
@@ -50,7 +46,7 @@ const AddPostForm = () => {
           id="postContent"
           name="postContent"
           value={content}
-          onChange={onContentChanged}
+          onChange={(e) => setContent(e.target.value)}
         />
         <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
           Save Post

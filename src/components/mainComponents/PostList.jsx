@@ -34,7 +34,7 @@ const PostList = () => {
         <h3>{post.title}</h3>
         <p>{post.body.substring(0, 100)}</p>
         <p className="postCredit">
-          <PostAuthor userId={post.userID} />
+          <PostAuthor userId={post.userId} />
           <TimeStamp timestamp={post.date} />
         </p>
         <Reactions post={post} />
@@ -43,7 +43,7 @@ const PostList = () => {
   } else if (postStatus === "failed") {
     content = <p>{error}</p>;
   }
-  
+
   return (
     <section>
       <h2>Posts</h2>
